@@ -1,0 +1,136 @@
+{
+  "version": "v1.1",
+  "data": [
+    {
+      "title": "300338457.pdf.xlsx",
+      "paragraphs": [
+        {
+          "qas": [
+            {
+              "answers": [
+                {
+                  "text": "平成29年9月22日",
+                  "answer_start": 22
+                }
+              ],
+              "id": "729b958f6c724f53a7162375634e9ff1",
+              "is_impossible": false,
+              "question": "公告日"
+            },
+            {
+              "answers": [
+                {
+                  "text": "旧松尾鉱山新中和処理施設で使用する電気",
+                  "answer_start": 128
+                }
+              ],
+              "id": "040370df81494853a1aba57722696336",
+              "is_impossible": false,
+              "question": "入札件名"
+            },
+            {
+              "answers": [
+                {
+                  "text": "平成30年",
+                  "answer_start": 206
+                }
+              ],
+              "id": "e319038655834107a670a3b962648534",
+              "is_impossible": false,
+              "question": "調達年度"
+            },
+            {
+              "answers": [
+                {
+                  "text": "平成30年3月1日",
+                  "answer_start": 206
+                }
+              ],
+              "id": "88a76fb286794d42bbccb4eed9b13538",
+              "is_impossible": false,
+              "question": "調達開始日"
+            },
+            {
+              "answers": [
+                {
+                  "text": "平成31年2月28日",
+                  "answer_start": 217
+                }
+              ],
+              "id": "2377fde883cc4e3fa3b73c175a90376c",
+              "is_impossible": false,
+              "question": "調達終了日"
+            },
+            {
+              "answers": [
+                {
+                  "text": "岩手県",
+                  "answer_start": 249
+                }
+              ],
+              "id": "eef4bd5b36184641913757e7af9d2aea",
+              "is_impossible": false,
+              "question": "都道府県"
+            },
+            {
+              "answers": [
+                {
+                  "text": "旧松尾鉱山新中和処理施設",
+                  "answer_start": 237
+                }
+              ],
+              "id": "3831213156f04f70b0f0a0b0254cf7d1",
+              "is_impossible": false,
+              "question": "施設名"
+            },
+            {
+              "answers": [
+                {
+                  "text": "岩手県八幡平市松尾寄木第1地割字1番地先",
+                  "answer_start": 249
+                }
+              ],
+              "id": "dfc0e8e5b7834f768067cd6e9a9f9b49",
+              "is_impossible": false,
+              "question": "需要場所(住所)"
+            },
+            {
+              "answers": [
+                {
+                  "text": "〒105-0001東京都港区虎ノ門二丁目10番1号虎ノ門ツインビルディング",
+                  "answer_start": 995
+                }
+              ],
+              "id": "e1eb58c0085d43da9f2fa6e7e23456a6",
+              "is_impossible": false,
+              "question": "入札書送付先"
+            },
+            {
+              "answers": [
+                {
+                  "text": "独立行政法人石油天然ガス・金属鉱物資源機構",
+                  "answer_start": 1033
+                }
+              ],
+              "id": "b7f1f4719ef0431b9cf74c2c847ca67a",
+              "is_impossible": false,
+              "question": "質問箇所所属/担当者"
+            },
+            {
+              "answers": [
+                {
+                  "text": "独立行政法人石油天然ガス・金属鉱物資源機構",
+                  "answer_start": 1033
+                }
+              ],
+              "id": "3ca7f5ea57554729851fb2482b56a4a3",
+              "is_impossible": false,
+              "question": "入札書送付先部署/担当者名"
+            }
+          ],
+          "context": "入札公告。次のとおり一般競争入札に付します。平成29年9月22日。独立行政法人石油天然ガス・金属鉱物資源機構。契約担当役。金属・石炭事業支援本部長池田肇。◎調達機関番号586◎所在地番号13。1調達内容。(1)品目分類番号26。(2)購入等件名及び予定数量旧松尾鉱山新中和処理施設で使用する電気契約電力570kW。年間予定使用電力量4,064,000kWh。(3)調達件名の特質等入札説明書による。(4)納入期間平成30年3月1日から平成31年2月28日まで。(5)需要場所旧松尾鉱山新中和処理施設岩手県八幡平市松尾寄木第1地割字1番地先。(6)入札方法入札金額は、各社において設定す。る契約電力に対する単価(kW単価単価には小。数点以下を含むことができる)、年間予定使用。電力量に対する単価(kWh単価単価には小数。点以下を含むことができる)及び当機構が提。示する年間予定使用電力量の対価を、入札書に。記載された入札金額に従って計算した総価を記。載すること落札の決定は、当該総価の108分。の100に相当する金額にて行うので、当該総価。の108分の100に相当する金額を当該総価と併せ。て記載すること。なお、落札価格は、当機構が提示する年間予。定使用電力量の対価を入札書に記載された入札。金額に従って計算した総価とするが、当該総価。の108分の100に相当する金額は、消費税及び地。方消費税に係る課税事業者であるか免税事業者。であるかを問わず、入札書に記載すること。2競争参加資格。(1)平成28年1月12日付「競争参加者の資格に関。する公示」の注意事項「3.競争に参加するこ。とができない者」に該当する者でないこと。(2)平成28・29・30年度の各省庁における物品の。製造・販売等に係る競争契約の参加資格(全省。庁統一資格)の内、「物品の販売」の分野で、。「A」の等級に格付けされている者であること。又は当該参加資格を有していない者で、開札日。の前日までに当該資格を有する見込みである者。(3)電気事業法第2条2の規定に基づき小売電気事。業者の登録を行っている者であること。(4)省CO化の要素を考慮する観点から、入札2。説明書に記載する基準を満たす者であること。(5)その他の条件は入札説明書による。3入札書の提出場所等。(1)入札書の提出場所、契約条項を示す場所及び問い合わせ先。〒105-0001東京都港区虎ノ門二丁目10番1号虎ノ門ツインビルディング。独立行政法人石油天然ガス・金属鉱物資源機構。金属環境事業部。工事設計支援課井上直洋。電話03-6758-8487。(2)入札説明書の交付場所。1上記3(1)の場所。2〒028-7303岩手県八幡平市柏台1-。3-1独立行政法人石油天然ガス・金属。鉱物資源機構松尾管理事務所所長佐。藤直樹電話0195-78-3156。(3)入札説明会の日時及び場所。平成29年10月2日14時00分独立行政法人石。油天然ガス・金属鉱物資源機構16階会議。室A・B。(4)入札書の受領期限。平成29年12月6日17時30分。(郵送等の場合でも必着のこと)。(5)開札の日時及び場所。平成29年12月15日14時00分独立行政法人石油天然ガス・金属鉱物資源機構16階会議室A・B。4その他。(1)契約手続において使用する言語及び通貨。日本語及び日本国通貨に限る。(2)入札保証金及び契約保証金免除。(3)入札者に要求される事項。1この競争に参加を希望する者は、入札説明。書に示した審査書類を、平成29年11月10日17。時30分までに提出しなければならない。(郵送等の場合でも必着のこと)。2入札者は、開札日の前日までの間におい。て、契約担当役から上の書類に関し説明を。求められた場合には、それに応じなければ。ならない。3この競争に参加を希望する者は、封印した。入札書を受領期限までに提出しなければなら。ない。(4)入札の無効本公告に示した競争参加資格の。ない者の提出した入札書及び入札に関する条件。に違反した者の提出した入札書は無効とする。(5)契約書作成の要否要。(6)落札者の決定方法提出された審査書類を審。査した結果、当機構の要求仕様を満たしている。と契約担当役が認めた者で、予定価格の制限の。範囲内で最低価格をもって有効な入札を行った。者を落札者とする。ただし、落札者となるべき者の入札価格によ。っては、その者により当該契約の内容に適合し。た履行がなされないおそれがあると認められる。とき、又はその者と契約を締結することが公正。な取引の秩序を乱すこととなるおそれがあって。著しく不適当であると認められるときは、予定。価格の制限の範囲内の価格をもって入札した他。の者のうち最低の価格をもって入札した者を落。札者とすることがある。(7)手続における交渉の有無無。(8)契約の解除等平成30年4月1日時点で岩手県。と当機構との委託契約(平成30年度旧松尾鉱山。新中和処理施設維持管理業務委託契約)が成立。しなかった場合、当該契約の一部を解除又は変。更する可能性がある。(9)その他詳細は入札説明書による。5契約の公表に係る留意事項。独立行政法人が行う契約については、「独立。行政法人の事務・事業の見直しの基本方針」。(平成22年12月7日閣議決定)において、独。立行政法人と一定の関係を有する法人と契約を。する場合には、当該法人への再就職の状況、当。該法人との間の取引等の状況について情報公開。するなどの取組を進めているところです。これに基づき、以下のとおり、当機構との。関係に係る情報を当機構のホームページで公。表することとしますので、所要の情報の当方。への提供及び情報の公表に同意の上で、応札。若しくは応募又は契約の締結を行っていただ。くようご理解とご協力をお願いいたします。なお、案件への応札若しくは応募又は契約。の締結をもって同意されたものとみなさせて。いただきますので、ご了知願います。(1)公表の対象となる契約先。次のいずれにも該当する契約先。1当機構において役員を経験した者(役員経。験者)が再就職していること又は課長相当職以。上の職を経験した者(課長相当職以上経験者)。が役員、顧問等として再就職していること。2当機構との間の取引高が、総売上高又は事。業収入の3分の1以上を占めていること。※予定価格が一定の金額を超えない契約や光熱。水費の支出に係る契約等は対象外。(2)公表する情報。上記に該当する契約先について、契約ごと。に、物品役務等の名称及び数量、契約締結日、。契約先の名称、契約金額等と併せ、次に掲げる。情報を公表します。1当機構の役員経験者及び課長相当職以上経。験者(当機構OB)の人数、職名及び当機構に。おける最終職名。2当機構との間の取引高。3総売上高又は事業収入に占める当機構との。間の取引高の割合が、次の区分のいずれかに。該当する旨。3分の1以上2分の1未満、2分の1。以上3分の2未満又は3分の2以上。4一者応札又は一者応募である場合はその。旨。(3)当方に提供していただく情報。1契約締結日時点で在職している当機構O。Bに係る情報(人数、現在の職名及び当機。構における最終職名等)。2直近の事業年度における総売上高又は事。業収入及び当機構との間の取引高。(4)公表日。契約締結の翌日から起算して原則として7。2日以内(4月に締結した契約については原則と。して93日以内)。6Summary。(1)Contractingentity:HajimeIkeda,。ExecutiveDirector,JapanOil,Gasand。MetalsNationalCorporation.。(2)Classificationoftheproductstobe。procured:26。(3)Natureandplannedquantityofthe。producttobepurchased:Electricitytobe。usedinMatsuoNeutralizationPlant,Contract。demand570kW,Theestimatedconsumptionforthe。year4,064,000kWh.。(4)Deliveryperiod:From1March,2018。through28February,2019。(5)Deliveryplace:MatsuoNeutralization。Plant(Ichiban-chisaki,Matsuo-yoriki-。daiichi-chiwari,Hachimantai-shi,Iwate。Prefecture)。(6)Qualificationsforparticipatinginthe。tenderingprocedures:。1Apersonorentitywhoshallnotcome。underArticle3of\"ThePublic。announcementonthequalificationsfor。participatinginthetenderingprocedures。bythe\"JapanOil,GasandMetals。NationalCorporation\",dated12January,。2016\"。2Apersonorentitywhoparticipatesin。competitionhastohaveeffective。qualificationfor2018from2016Japanese。Governmentset.。3Tobearetailelectricoperator。establishedbytheElectricUtility。IndustryLaw.。4Fulfilltherequirementmentionedinthe。tenderexplanationthatarestatedfrom。theviewpointofreducingCO.2。5Otherrequirementsforparticipatingin。thistenderrefertotenderexplanation.。(7)Timelimitfortender:17:306December,。2018。(8)Contactpointforthenotice:Naohiro。Inoue,Tel:03-6758-8487。MetalsEnvironmentManagementDepartment,。JapanOil,GasandMetalsNational。Corporation,10-1,Toranomon2-chome,。Minato-ku,Tokyo,105-0001,Japan."
+        }
+      ]
+    }
+  ]
+}
