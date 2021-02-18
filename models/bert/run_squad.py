@@ -574,7 +574,7 @@ def _check_is_max_context(doc_spans, cur_span_index, position):
 def create_model(bert_config, is_training, input_ids, input_mask, segment_ids,
                   use_one_hot_embeddings):
   """Creates a classification model."""
-  model = modeling.BertModel(
+  model = modeling.Be rtModel(
       config=bert_config,
       is_training=is_training,
       input_ids=input_ids,
@@ -1334,8 +1334,7 @@ def main(_):
     start_train = datetime.now()
     estimator.train(input_fn=train_input_fn, max_steps=num_train_steps)
     end_train = datetime.now()
-    tf.compat.v1.logging.info("TRAINING TIME: {}".format(end_train - start_train))
-    time.sleep(5)
+    
     tf.compat.v1.logging.info('________________________________DONE_TRAIN________________________________________')
 
     #Export model
@@ -1392,6 +1391,7 @@ def main(_):
           seq_length=FLAGS.max_seq_length,
           is_training=False,
           drop_remainder=False)
+
     all_results = []
     for result in estimator.predict(
         predict_input_fn, yield_single_examples=True):
@@ -1421,6 +1421,7 @@ def main(_):
   tf.compat.v1.logging.info('IS PREDICTING: {}'.format(FLAGS.do_predict))
   tf.compat.v1.logging.info('START TIME: {}'.format(start_time))
   tf.compat.v1.logging.info('END TIME: {}'.format(end_time))
+  tf.compat.v1.logging.info("TRAINING TIME: {}".format(end_train - start_train))
   tf.compat.v1.logging.info('TOTAL TIME RUN: {}'.format(end_time - start_time))
   
   time.sleep(1)
