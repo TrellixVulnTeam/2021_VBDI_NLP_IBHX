@@ -20,8 +20,9 @@ import neologdn
 
 
 stopwords = []
-with open(r'D:\VBDI_NLP\bert\japanese_stopword_list.txt', encoding = 'utf-8') as f1:
-    for line in f1:
+path = r'D:\VBDI_NLP\bert\japanese_stopword_list.txt' # change path to read stopwords
+with open(path, encoding = 'utf-8') as f1:
+    for line in f1.read().splitlines():
         stopwords.append(line)
     f1.close()
 
@@ -32,6 +33,10 @@ def remove_stopword(text):
            splt.remove(ch)
     text_ = ''.join(splt)
     return text_
+
+def normalize_answer_jp(s):
+    text = neologdn.normalize(remove_stopword(s))
+    return text
 
 _unicode_chr_splitter = _Re( '(?s)((?:[\ud800-\udbff][\udc00-\udfff])|.)' ).split
 
@@ -52,9 +57,7 @@ def split_unicode_chrs( text ):
     '''
     return [ chr for chr in _unicode_chr_splitter( text ) if chr ]
 
-def normalize_answer_jp(s):
-    text = neologdn.normalize(remove_stopword(s))
-    return text
+
 
 def normalize_answer(s):
     '''
@@ -106,8 +109,8 @@ def f1_score(prediction, ground_truth):
         DESCRIPTION. f1-score that does not count the order of character
 
     '''
-    prediction_tokens = split_unicode_chrs(normalize_answer_jp(prediction))
-    ground_truth_tokens = split_unicode_chrs(normalize_answer_jp(ground_truth))
+    prediction_tokens = split_unicode_chrs(prediction)
+    ground_truth_tokens = split_unicode_chrs(ground_truth)
     common = Counter(prediction_tokens) & Counter(ground_truth_tokens)
     num_same = sum(common.values())
     if num_same == 0:
@@ -136,8 +139,8 @@ def exact_match_score(prediction, ground_truth):
         DESCRIPTION. True or False
 
     '''
-    return (normalize_answer_jp(prediction) == normalize_answer_jp(ground_truth))
-
+    # return (normalize_answer_jp(prediction) == normalize_answer_jp(ground_truth))
+    return (neologdn.normalize(prediction) == neologdn.normalize(ground_truth))
 
 def metric_max_over_ground_truths(metric_fn, prediction, ground_truths):
     '''
