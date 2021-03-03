@@ -7,7 +7,7 @@ Created on Thu Feb 18 10:04:10 2021
 from __future__ import print_function
 
 import collections
-from collections import Counter
+from collections import Counter, OrderedDict
 import json
 import os
 import numpy as np
@@ -20,9 +20,8 @@ import neologdn
 
 
 stopwords = []
-path = r'D:\VBDI_NLP\bert\japanese_stopword_list.txt' # change path to read stopwords
-with open(path, encoding = 'utf-8') as f1:
-    for line in f1.read().splitlines():
+with open(r'D:\VBDI_NLP\bert\japanese_stopword_list.txt', encoding = 'utf-8') as f1:
+    for line in f1:
         stopwords.append(line)
     f1.close()
 
@@ -34,9 +33,9 @@ def remove_stopword(text):
     text_ = ''.join(splt)
     return text_
 
-def normalize_answer_jp(s):
-    text = neologdn.normalize(remove_stopword(s))
-    return text
+def remove_punc(text):
+    exclude = set(string.punctuation)
+    return ''.join(ch for ch in text if ch not in exclude)
 
 _unicode_chr_splitter = _Re( '(?s)((?:[\ud800-\udbff][\udc00-\udfff])|.)' ).split
 
@@ -57,7 +56,9 @@ def split_unicode_chrs( text ):
     '''
     return [ chr for chr in _unicode_chr_splitter( text ) if chr ]
 
-
+def normalize_answer_jp(s):
+    text = neologdn.normalize(remove_punc(remove_stopword(s)))
+    return text
 
 def normalize_answer(s):
     '''
@@ -109,8 +110,8 @@ def f1_score(prediction, ground_truth):
         DESCRIPTION. f1-score that does not count the order of character
 
     '''
-    prediction_tokens = split_unicode_chrs(prediction)
-    ground_truth_tokens = split_unicode_chrs(ground_truth)
+    prediction_tokens = split_unicode_chrs(normalize_answer_jp(prediction))
+    ground_truth_tokens = split_unicode_chrs(normalize_answer_jp(ground_truth))
     common = Counter(prediction_tokens) & Counter(ground_truth_tokens)
     num_same = sum(common.values())
     if num_same == 0:
@@ -139,8 +140,8 @@ def exact_match_score(prediction, ground_truth):
         DESCRIPTION. True or False
 
     '''
-    # return (normalize_answer_jp(prediction) == normalize_answer_jp(ground_truth))
-    return (neologdn.normalize(prediction) == neologdn.normalize(ground_truth))
+    return (normalize_answer_jp(prediction) == normalize_answer_jp(ground_truth))
+
 
 def metric_max_over_ground_truths(metric_fn, prediction, ground_truths):
     '''
@@ -179,9 +180,9 @@ def evaluate(dataset, predictions):
                     print(message, file=sys.stderr)
                     continue
                 ground_truths = list(map(lambda x: x['text'], qa['answers']))
-                print('ground_truths: {}'.format(ground_truths))
+                # print('ground_truths: {}'.format(ground_truths))
                 prediction = predictions[qa['id']]
-                print('prediction: {}'.format(prediction))
+                # print('prediction: {}'.format(prediction))
                 try:
                     exact_match += metric_max_over_ground_truths(
                         exact_match_score, prediction, ground_truths)
@@ -189,27 +190,47 @@ def evaluate(dataset, predictions):
                         f1_score, prediction, ground_truths)
                     total += 1 # greedy method
                 except:
-                    print('the question {} has no ground truth'.format(qa['id']))
+                    print('the question {} has no infomation in this {} document'.format(qa['id'], article['title']))
 
     exact_match = round(100.0 * exact_match / total, 2)
     f1 = round(100.0 * f1 / total, 2)
-
+    print('result : ', {'exact_match': exact_match, 'f1': f1})
     return {'exact_match': exact_match, 'f1': f1}
 
 #%%
-'''
+# '''
 # Example of using evaluator
 # Opening JSON file 
-f = open(r'D:\VBDI_NLP\bert\tmp\squad_basecnn_jp\predictions.json') 
-data_pred = json.load(f) 
+# f = open(r'D:\VBDI_NLP\bert\tmp\squad_basecnn_jp\predictions.json') 
+# data_pred = json.load(f) 
 
-f0 = open(r'D:\VBDI_NLP\jbddata\jbddata_dev_data.json', 'rb')
-data = json.load(f0, encoding = 'utf-8')["data"]
+# f0 = open(r'D:\VBDI_NLP\jbddata\jbddata_dev_data.json', 'rb')
+# data = json.load(f0, encoding = 'utf-8')["data"]
 
-test_eval = evaluate(data, data_pred)
+# test_eval = evaluate(data, data_pred)
 
-# result: {'exact_match': 54.33, 'f1': 81.36}
-s = '令和2年5月20日(水)14時00分~'
-neologdn.normalize(s)
-normalize_answer_jp(s)
-'''
+# result: {'exact_match': 79.1, 'f1': 90.71} # BERT
+
+# result: {'exact_match': 74.93, 'f1': 91.14} # BERT + CNN
+
+#%%
+# Electra_japanese
+# decoder = json.JSONDecoder(object_pairs_hook=collections.OrderedDict)
+# f0 = open(r'D:\VBDI_NLP\jbddata\jbddata_dev_data.json', 'rb')
+# data = json.load(f0, encoding = 'utf-8')["data"]
+
+# f = open(r'D:\VBDI_NLP\electra_japanese\data\models\electra_small\results\squad_qa\squad_preds.json')
+# data_pred = json.load(f)
+# data_pred = dict(eval(data_pred)) # Data is n_best_prediction NOT the best ones
+# best_pred = {}
+
+# for k,v in data_pred.items():
+#     prob = []
+#     for case in range(len(v)):
+#         prob.append((v[case]['probability'], v[case]['text']))
+#     best = max(prob,key=lambda x:x[0])
+#     best_pred[k] = best[1]
+
+# test_eval = evaluate(data, best_pred)
+
+# result: {'exact_match': 34.63, 'f1': 87.44}

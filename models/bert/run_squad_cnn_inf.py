@@ -35,15 +35,15 @@ FLAGS = flags.FLAGS
 
 ## Required parameters
 flags.DEFINE_string(
-    "bert_config_file", None,
+    "bert_config_file", 'D:\VBDI_NLP\multi_cased_L-12_H-768_A-12/bert_config.json',
     "The config json file corresponding to the pre-trained BERT model. "
     "This specifies the model architecture.")
 
-flags.DEFINE_string("vocab_file", None,
+flags.DEFINE_string("vocab_file", 'D:\VBDI_NLP\multi_cased_L-12_H-768_A-12/vocab.txt',
                     "The vocabulary file that the BERT model was trained on.")
 
 flags.DEFINE_string(
-    "output_dir", None,
+    "output_dir", 'D:\VBDI_NLP\bert\tmp\demo',
     "The output directory where the model checkpoints will be written.")
 
 ## Other parameters
@@ -51,11 +51,11 @@ flags.DEFINE_string("train_file", None,
                     "SQuAD json for training. E.g., train-v1.1.json")
 
 flags.DEFINE_string(
-    "predict_file", None,
+    "predict_file", 'D:\VBDI_NLP\jbddata\jbd_test_data.json',
     "SQuAD json for predictions. E.g., dev-v1.1.json or test-v1.1.json")
 
 flags.DEFINE_string(
-    "init_checkpoint", None,
+    "init_checkpoint", 'D:\VBDI_NLP\bert\tmp\squad_basecnn_jp\model.ckpt-4967',
     "Initial checkpoint (usually from a pre-trained BERT model).")
 
 flags.DEFINE_bool(
@@ -81,7 +81,7 @@ flags.DEFINE_integer(
 
 flags.DEFINE_bool("do_train", False, "Whether to run training.")
 
-flags.DEFINE_bool("do_predict", False, "Whether to run eval on the dev set.")
+flags.DEFINE_bool("do_predict", True, "Whether to run eval on the dev set.")
 
 flags.DEFINE_integer("train_batch_size", 32, "Total batch size for training.")
 
@@ -1159,7 +1159,7 @@ def validate_flags_or_throw(bert_config):
         "(%d) + 3" % (FLAGS.max_seq_length, FLAGS.max_query_length))
 
 
-def main(_):
+def predictor(_):
   tf.logging.set_verbosity(tf.logging.INFO)
 
   bert_config = modeling.BertConfig.from_json_file(FLAGS.bert_config_file)
@@ -1220,35 +1220,35 @@ def main(_):
       train_batch_size=FLAGS.train_batch_size,
       predict_batch_size=FLAGS.predict_batch_size)
 
-  if FLAGS.do_train:
-    try:
-      tf.compat.v1.logging.info('____________________________________________LOAD FEATURES________________________________________')
-      train_input_fn = input_fn_builder(
-          input_file=os.path.join(FLAGS.output_dir, "train.tf_record"),
-          seq_length=FLAGS.max_seq_length,
-          is_training=True,
-          drop_remainder=True)
-    except:
-      tf.compat.v1.logging.info('________________________________________________FEATURES IS NOT AVAILABLE________________________________________')
-      train_writer = FeatureWriter(
-          filename=os.path.join(FLAGS.output_dir, "train.tf_record"),
-          is_training=True)
-      tf.compat.v1.logging.info('________________________________________________CONVERT DATA TO FEATURES________________________________________')
-      convert_examples_to_features(
-          examples=train_examples,
-          tokenizer=tokenizer,
-          max_seq_length=FLAGS.max_seq_length,
-          doc_stride=FLAGS.doc_stride,
-          max_query_length=FLAGS.max_query_length,
-          is_training=True,
-          output_fn=train_writer.process_feature)
-      train_writer.close()
-      tf.compat.v1.logging.info('_______________________________________FINISHED CONVERT DATA TO FEATURES________________________________________')
-      train_input_fn = input_fn_builder(
-        input_file=train_writer.filename,
-        seq_length=FLAGS.max_seq_length,
-        is_training=True,
-        drop_remainder=True)
+  # if FLAGS.do_train:
+  #   try:
+  #     tf.compat.v1.logging.info('____________________________________________LOAD FEATURES________________________________________')
+  #     train_input_fn = input_fn_builder(
+  #         input_file=os.path.join(FLAGS.output_dir, "train.tf_record"),
+  #         seq_length=FLAGS.max_seq_length,
+  #         is_training=True,
+  #         drop_remainder=True)
+  #   except:
+  #     tf.compat.v1.logging.info('________________________________________________FEATURES IS NOT AVAILABLE________________________________________')
+  #     train_writer = FeatureWriter(
+  #         filename=os.path.join(FLAGS.output_dir, "train.tf_record"),
+  #         is_training=True)
+  #     tf.compat.v1.logging.info('________________________________________________CONVERT DATA TO FEATURES________________________________________')
+  #     convert_examples_to_features(
+  #         examples=train_examples,
+  #         tokenizer=tokenizer,
+  #         max_seq_length=FLAGS.max_seq_length,
+  #         doc_stride=FLAGS.doc_stride,
+  #         max_query_length=FLAGS.max_query_length,
+  #         is_training=True,
+  #         output_fn=train_writer.process_feature)
+  #     train_writer.close()
+  #     tf.compat.v1.logging.info('_______________________________________FINISHED CONVERT DATA TO FEATURES________________________________________')
+  #     train_input_fn = input_fn_builder(
+  #       input_file=train_writer.filename,
+  #       seq_length=FLAGS.max_seq_length,
+  #       is_training=True,
+  #       drop_remainder=True)
     ####################################################################################################
     # # We write to a temporary file to avoid storing very large constant tensors
     # # in memory.
@@ -1278,7 +1278,7 @@ def main(_):
     #     is_training=True,
     #     drop_remainder=True)
     ######################################################################################################
-    estimator.train(input_fn=train_input_fn, max_steps=num_train_steps)
+    # estimator.train(input_fn=train_input_fn, max_steps=num_train_steps)
 
   if FLAGS.do_predict:
     eval_examples = read_squad_examples(
@@ -1340,10 +1340,3 @@ def main(_):
                       FLAGS.n_best_size, FLAGS.max_answer_length,
                       FLAGS.do_lower_case, output_prediction_file,
                       output_nbest_file, output_null_log_odds_file)
-
-
-if __name__ == "__main__":
-  flags.mark_flag_as_required("vocab_file")
-  flags.mark_flag_as_required("bert_config_file")
-  flags.mark_flag_as_required("output_dir")
-  tf.app.run()

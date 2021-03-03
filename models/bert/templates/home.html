@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/static/bootstrap.min.css"/>
+  <style>
+    .content {
+      max-width: 600px;
+      margin: auto;
+      padding: 10px;
+    }
+    .center {
+      margin: auto;
+      width: 100%;
+      padding: 10px;
+    }
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 12px;
+    }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    .body {
+      font-family: 'Trebuchet MS', sans-serif;
+    }
+    li {
+      padding: 10px;
+    }
+  </style>
+  <title>Information Extraction Server</title>
+  <body class="body">
+    <div class="page-header" id="banner">
+      <div>
+          <h3 class = "content" style="color:White; background-color:MediumSeaGreen;">Information Extraction Server_NLP_Demo</h3>
+          <p class="content">Upload the .pdf file for extracting information</p>
+      </div>
+      <form class = "content" action="" method=post enctype=multipart/form-data>
+        <input type=file name=file>
+        <input type=submit value=Extract>
+    </form>
+    </div>
+    <div class="row">
+          <div class="content">
+            <h4>Team Menber:</h4>
+            <ul>
+              <li>Nguyen Minh Son</li>
+              <li>Dang Quynh Anh</li>
+              <li>Le Quoc Viet</li>
+            </ul>  
+          </div>
+          <div class="page-header">
+            <h3 id="tables" class="content">Information Extracted</h3>
+            <p class="content">Time spend for extracting information: {{spend_time}}</p>
+          </div>
+          <div class="center">
+            <table class="center" style="width:60%">
+              <tr>
+                {% for header in headings %}
+                <th>{{ header }}</th>
+                {% endfor %}
+              </tr>
+              {% for row in data %}
+              <tr>
+                {% for cell in row %}
+                <td>{{ cell }}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </table> 
+    </div>
+  </body>
